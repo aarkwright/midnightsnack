@@ -1,15 +1,11 @@
 # Needed Settings
 
     # Log file location - needs to be defined first
-    LogFileLoc="/home/harry/android/system/logs"
+    LogFileLoc="/home/builder/android/system/logs"
 
-    SourceTreeLoc="/home/harry/android/system"
+    SourceTreeLoc="/home/builder/android/system"
     DeviceList=(
-                  "angler"
-                  "flounder"
-                  "flounder_lte"
-                  "grouper"
-                  "tilapia"
+                  "oneplus3"
                                     )
 
     # In Settings, Version: 14.1-20161225-UNOFFICIAL-angler
@@ -24,7 +20,7 @@
     RomVersion="14.1"
 
     # Jack eats RAM
-    JackRAM="6g"
+    JackRAM="8g"
 
     # Can run make clean before building OR before building + between each device build
     # Can be "Disabled", "BetweenBuilds" or "AtStart"
@@ -50,13 +46,13 @@
     # Override threads for building. This is set to CPU core count by default
     # If this is too low (<3), you may run into weird problems like:
     # javac: file not found: out/target/common/obj/APPS/org.cyanogenmod.platform-res_intermediates/src/cyanogenmod/platform/Manifest.java
-    #MakeThreadCount=3
+    MakeThreadCount=4
 
 
 
 # SSH Upload
-    SSHUpload=true #Therefore define the parameters
-      SSHHost=harryyoud.co.uk
-      SSHUser=harryyoud
+    SSHUpload=false #Therefore define the parameters
+      SSHHost=lineage
+      SSHUser=builder
       SSHPort=22
-      SSHDirectory=/home/harryyoud/public_html/lineageos/downloads
+      SSHDirectory=/home/builder/public_html/lineageos/downloads
