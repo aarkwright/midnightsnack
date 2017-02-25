@@ -20,12 +20,23 @@ while read REPO GIT_PATH; do
 	
 	echo "[+] LineageOS/${REPO}"
 	if [[ ! $(git remote -v | grep upstream) ]]; then
-		git remote add upstream https://github.com/LineageOS/${REPO}
+		# Change own repos to ssh
+		git remote rm github
+		git remote add github git@github.com:aarkwright/${REPO}
+		
+		# Add guest repo
+		git remote add upstream git@github.com:LineageOS/${REPO}
 		git remote -v
 	else
 		echo "[-] Removing old upstream: $(git remote -v | awk '/upstream/ {print $2}' | sort -u)"
+		
+		# Change own repos to ssh
+		git remote rm github
+		git remote add github git@github.com:aarkwright/${REPO}
+		
+		# Change guest repos
 		git remote rm upstream
-		git remote add upstream https://github.com/LineageOS/${REPO}
+		git remote add upstream git@github.com:LineageOS/${REPO}
 		git remote -v
 	fi
 	echo
@@ -37,12 +48,23 @@ while read REPO GIT_PATH; do
 	
 	echo "[+] LineageOS/${REPO}"
 	if [[ ! $(git remote -v | grep upstream) ]]; then
-		git remote add upstream https://github.com/TheMuppets/${REPO}
+		# Change own repos to ssh
+		git remote rm github
+		git remote add github git@github.com:aarkwright/${REPO}
+	
+		# Add guest repo
+		git remote add upstream git@github.com:TheMuppets/${REPO}
 		git remote -v
 	else
 		echo "[-] Removing old upstream: $(git remote -v | awk '/upstream/ {print $2}' | sort -u)"
+		
+		# Change own repos to ssh
+		git remote rm github
+		git remote add github git@github.com:aarkwright/${REPO}
+		
+		# Change guest repos
 		git remote rm upstream
-		git remote add upstream https://github.com/TheMuppets/${REPO}
+		git remote add upstream git@github.com:TheMuppets/${REPO}
 		git remote -v
 	fi
 	echo

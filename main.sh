@@ -65,7 +65,11 @@
 #     Only output errors to log, and send stdout to /dev/null
 
       if [[ $SyncOnStart = true ]]; then
-        LogMain "Syncing repositories"
+	LogMain "Switching all remotes to ssh"
+	LogCommandMainErrors "/home/$USER/android/midnightsnack/upstreams.sh"
+	LogMain "Updating all private forks"
+	LogCommandMainErrors "/home/$USER/android/midnightsnack/update.sh"
+	LogMain "Syncing repositories"
         LogCommandMainErrors "/home/$USER/bin/repo sync -q"
       else
         LogMain "\$SyncOnStart not set; skipping repo sync"
